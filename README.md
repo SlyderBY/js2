@@ -1,1 +1,1 @@
-# js2
+# Home work for JavaScript lessons
