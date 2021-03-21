@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Burger calc</title>
+        <meta charset="utf-8">
+        <script>
+            class Topping {
+                constructor(name, price = 0, calories = 0) {
+                    this.name = name;
+                    this.price = Number(price.toFixed(2));
+                    this.calories = Number(calories);
+                }
+            }
+
+
+            class Filling extends Topping {}
+
+
+            class Burger {
+                constructor(size, price, calories, filling = {name: 'no', price: 0, calories: 0}) {
+                    this.size = size;
+                    this.price = Number(price.toFixed(2));
+                    this.calories = Number(calories);
+                    this.filling = filling;
+                    this.toppings_list = [];
+                }
+
+                addTopping(t) {
+                    this.toppings_list.push(t);
+                }
+
+                delTopping(t) {
+                    for (let item in this.toppings_list) {
+                        if (this.toppings_list[item].name === t.name) {
+                            this.toppings_list.splice(this.toppings_list[item], 1);
+                            break;
+                        }
+                    }
+                }
+
+                getToppings() {
+                    return this.toppings_list;
+                }
+
+                getPrice() {
+                    let total = this.price;
+                    if (this.toppings_list.length > 0)
+                        this.toppings_list.forEach(t => total += t.price);
+                    return total + this.filling.price;
+                }
+
+                getCalories() {
+                    let total = this.calories;
+                    if (this.toppings_list.length > 0)
+                        this.toppings_list.forEach(t => total += t.calories);
+                    return total + this.filling.calories;
+                }
+            }
+
+
+            class SmallBurger extends Burger {
+                constructor(filling) {
+                    super('small', 50, 20, filling);
+                }
+            }
+
+
+            class BigBurger extends Burger {
+                constructor(filling) {
+                    super('big', 100, 40, filling);
+                }
+            }
+
+
+            const cheese = new Filling('Cheese', 10, 20);
+            const salad = new Filling('Salad', 20, 5);
+            const potato = new Filling('Potato', 15, 10);
+            const seasoning = new Topping('Seasoning', 15, 0);
+            const mayonnaise = new Topping('Mayonnaise', 20, 5);
+
+            const b1 = new SmallBurger();
+            b1.addTopping(seasoning);
+            console.log(`The price of a ${b1.size} burger with ${b1.filling.name} filling is ${b1.getPrice()} rubles and it have ${b1.getCalories()} calories.`);
+            if (b1.getToppings().length > 0) {
+                let t_names = [];
+                b1.getToppings().forEach(t => t_names.push(t.name));
+                console.log(`This burger also staffed with following toppings: ${t_names.join(',')}`);
+            }
+
+            const b2 = new BigBurger(cheese);
+            b2.addTopping(seasoning);
+            b2.addTopping(mayonnaise);
+            console.log(`The price of a ${b2.size} burger with ${b2.filling.name} filling is ${b2.getPrice()} rubles and it have ${b2.getCalories()} calories.`);
+            if (b2.getToppings().length > 0) {
+                let t_names = [];
+                b2.getToppings().forEach(t => t_names.push(t.name));
+                console.log(`This burger also staffed with following toppings: ${t_names.join(', ')}`);
+            }
+        </script>
+    </head>
+    <body>
+    </body>
+</html>
