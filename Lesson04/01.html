@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Задание 1</title>
+        <meta charset="utf-8">
+        <script>
+            window.onload = function replaceQuotes() {
+                alert(document.querySelector('.text').innerHTML.replace(/'/g, '"'));
+            }
+        </script>
+    </head>
+    <body>
+    <div class="text">
+        <p>
+            This is example text. Cow say: 'Moo'. Cat say: 'Miew'. Dog say: 'Woof'.
+        </p>
+    </div>
+    </body>
+</html>
