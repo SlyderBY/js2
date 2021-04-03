@@ -22,7 +22,7 @@ class ShopItemsList {
         this.items = [];
     }
 
-    const fetchShopItems = (sample_items) => {
+    fetchShopItems = (sample_items) => {
         return new Promise((resolve, reject) => {
             if (sample_items.length > 0) {
                 sample_items.forEach(item => this.add(item))
