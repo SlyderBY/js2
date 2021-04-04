@@ -196,7 +196,7 @@ window.onload = () => {
 
         methods: {
             filterItems() {
-                console.log('filterItems()');
+                console.log('filterItems(): ' + this.searchLine);
             },
             openBasket() {
                 this.isVisibleCart = true;

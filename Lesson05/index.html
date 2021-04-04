@@ -22,8 +22,8 @@
             </nav>
             <div class="mr-4 ml-4">
                 <form class="form-inline mt-2 mt-md-0">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Поиск" v-model="searchLine" v-on="filterItems()">
-                    <!-- <button class="btn btn-outline-success my-2 my-sm-0">Поиск</button> -->
+                    <input class="form-control mr-sm-2" type="text" placeholder="Поиск" v-model="searchLine">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="button" @click="filterItems">Поиск</button>
                 </form>
             </div>
             <a class="btn btn-outline-primary btn-basket" @click="openBasket">Корзина</a>
@@ -34,12 +34,10 @@
         </div>
         <div class="modal" v-if="isVisibleCart">
             <div class="modal-content">
-                <!--
                 <span class="basket-content-close" @click="closeBasket">&times;</span>
                 <h1 class="my-0 mr-md-auto font-weight-normal">Корзина</h1>
                 <div class="basket-content">
                 </div>
-                -->
             </div>
         </div>
     </div>
