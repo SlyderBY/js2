@@ -169,10 +169,15 @@ class ShopItemsList {
 
     render(selector) {
         let listHTML = '';
-        this.items.forEach(i => {
-            const item = new ShopItem(i.name, i.image, i.price);
-            listHTML += item.render();
-        });
+        if (this.items.length > 0) {
+            this.items.forEach(i => {
+                const item = new ShopItem(i.name, i.image, i.price);
+                listHTML += item.render();
+            });
+        } else {
+            listHTML = '<h1>Нет данных</h1>';
+        }
+
         document.querySelector(selector).innerHTML = listHTML;
     }
 }
