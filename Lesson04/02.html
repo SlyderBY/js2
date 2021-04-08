@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Задание 2</title>
+        <meta charset="utf-8">
+        <script>
+            window.onload = function replaceQuotes() {
+                alert(document.querySelector('.text').innerHTML.replace(/\B'|'\B/g, '"'));
+            }
+        </script>
+    </head>
+    <body>
+    <div class="text">
+        <p>
+            Cow say: 'Moo'. Cat say: 'Miew'. Dog say: 'Woof'. A fish doesn't make any sound.
+        </p>
+    </div>
+    </body>
+</html>

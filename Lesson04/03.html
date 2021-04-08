@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Задание 3</title>
+        <meta charset="utf-8">
+        <script>
+            window.onload = function() {
+                document.getElementById('data').onsubmit = function() {
+                    const name = document.forms["data"]["name"];
+                    const phone = document.forms["data"]["phone"];
+                    const email = document.forms["data"]["email"];
+
+                    if (! /^[a-zA-Z]+$/.test(name.value)) {
+                        name.style = 'border-color: red;';
+                        alert('Bad email');
+                        return false;
+                    }
+
+                    if (! /^\+7\(\d{3,3}\)\d{3,3}-\d{4,4}$/.test(phone.value)) {
+                        phone.style = 'border-color: red;';
+                        alert('Bad email');
+                        return false;
+                    }
+
+                    if (! /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value)) {
+                        email.style = 'border-color: red;';
+                        alert('Bad email');
+                        return false;
+                    }
+
+                    name.style = 'border-color: grey;';
+                    phone.style = 'border-color: grey;';
+                    email.style = 'border-color: grey;';
+                    return true;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <form id="data" enctype="text/plain">
+            <p>
+                <b>Name</b>&nbsp<input type="text" name="name"><br>
+                <b>Phone</b>&nbsp<input type="tel" name="phone"><br>
+                <b>E-mail</b>&nbsp<input type="text" name="email"><br>
+                <b>Text</b>&nbsp<input type="text" name="text"><br>
+            </p>
+            <p>
+                <input type="submit" value="Submit">
+            </p>
+        </form>
+    </body>
+</html>
